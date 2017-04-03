@@ -71,7 +71,7 @@ footer{
   }
 }
 /* Some Cool Stuff */
-.demo-card:nth-child(1) {
+/*.demo-card:nth-child(1) {
   order: 1;
 }
 
@@ -100,7 +100,7 @@ footer{
 }
 .demo-card:nth-child(8) {
   order: 8;
-}
+}*/
 
 /* Border Box */
 * {
@@ -139,9 +139,9 @@ body {
 @media (min-width: 1000px) {
   #timeline .demo-card-wrapper {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     width: 1170px;
-    height: 2150px;
+    height: auto;
     margin: 0 auto;
   }
 }
@@ -180,7 +180,7 @@ body {
 @media (min-width: 1000px) {
   #timeline .demo-card {
     max-width: 450px;
-    height: 400px;
+    height: 400px; /* TODO Add this via js */
     margin: 90px;
     margin-top: 45px;
     margin-bottom: 45px;
@@ -199,6 +199,7 @@ body {
   }
   #timeline .demo-card:nth-child(even) {
     margin-left: 45px;
+    margin-top: 180px;
   }
   #timeline .demo-card:nth-child(even) .head::after {
     border-right-width: 15px;
@@ -221,8 +222,8 @@ body {
 }
 @media (min-width: 1000px) {
   #timeline .demo-card .body {
-    height: 315px;
-    overflow: auto;
+    height: auto;
+    /*overflow: auto;*/
   }
 }
 #timeline .demo-card .body p {
