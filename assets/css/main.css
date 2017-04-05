@@ -8389,19 +8389,10 @@ body {
 #timeline .demo-card--step8 .head::after {
   border-color: #129265; }
 
-.number-highlighter {
-  color: darkorange;
-  font-size: 32px; }
-
-.num-stats {
-  float: right; }
-
-.num-stats > div {
-  display: block;
-  width: 100%; }
-
-.num-stats div.stat-item {
-  display: inline-block; }
+html {
+  height: 100%;
+  font-size: 16px;
+  font-family: 'Roboto'; }
 
 .float-left {
   float: left; }
@@ -8409,11 +8400,22 @@ body {
 .float-right {
   float: right; }
 
-.header .title, .header .num-stats {
-  padding: 20px 15px; }
-
-html {
-  height: 100%; }
+.header {
+  padding: 10px 25px; }
+  .header .title, .header .num-stats {
+    padding: 20px 15px; }
+  .header .num-stats {
+    float: right;
+    font-size: 2rem; }
+    .header .num-stats > div {
+      display: block;
+      width: 100%; }
+    .header .num-stats div.stat-item {
+      display: inline-block; }
+    .header .num-stats .number-highlighter {
+      color: darkorange;
+      font-size: 3.5rem;
+      font-weight: bold; }
 
 footer {
   position: relative;

@@ -1,21 +1,8 @@
-.number-highlighter{
-  color: darkorange;
-  font-size: 32px;
+html{
+  height: 100%;
+  font-size: 16px;
+  font-family: 'Roboto';
 }
-
-.num-stats{
-  float: right;
-}
-
-.num-stats > div{
-  display: block;
-  width: 100%;
-}
-
-.num-stats div.stat-item{
-  display: inline-block;
-}
-
 .float-left{
   float: left;
 }
@@ -24,12 +11,27 @@
   float: right;
 }
 
-.header .title, .header .num-stats{
-  padding: 20px 15px;
-}
-
-html{
-  height: 100%;
+.header {
+  padding: 10px 25px;
+  .title, .num-stats{
+    padding: 20px 15px;
+  }
+  .num-stats{
+    float: right;
+    font-size: 2rem;
+    > div{
+      display: block;
+      width: 100%;
+    }
+    div.stat-item{
+      display: inline-block;
+    }
+    .number-highlighter{
+      color: darkorange;
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
+  }
 }
 
 footer{
