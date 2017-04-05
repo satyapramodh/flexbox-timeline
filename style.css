@@ -40,13 +40,34 @@ html{
 
 footer{
   position: relative;
-  right: 0;
+  /*right: 0;
   bottom: 0;
-  left: 0;
+  left: 0;*/
+  display: block;
   height: 200px;
+  padding: 25px;
   background-color: white;
   z-index: 9999;
-  box-shadow: 1px -3px 3px #888888;
+}
+footer h6{
+  font-size: 18px;
+  font-weight: 800;
+}
+.partner-logos{
+  margin-bottom: 25px; 
+}
+
+.partner-logos img{
+  height: 40px;
+}
+
+.footer-logos{
+  margin: 10px 0;
+}
+.footer-logos img{
+  width: 100px;
+  max-height: 100px;
+  padding: 5px;
 }
 
 
@@ -223,7 +244,8 @@ body {
 @media (min-width: 1000px) {
   #timeline .demo-card .body {
     height: auto;
-    /*overflow: auto;*/
+    max-height: 400px;
+    overflow-y: auto;
   }
 }
 #timeline .demo-card .body p {
@@ -320,4 +342,11 @@ body {
 }
 #timeline .demo-card--step7 .head::after {
   border-color: #654292;
+}
+
+#timeline .demo-card--step8 {
+  background-color: #129265;
+}
+#timeline .demo-card--step8 .head::after {
+  border-color: #129265;
 }
