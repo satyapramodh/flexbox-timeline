@@ -25,7 +25,7 @@
       flex-flow: row wrap;
       height: auto;
       margin: 0 auto;
-      width: 100%;
+      width: 1170px;
       &:after{
         border-left: 1px solid #bdbdbd;
       }
@@ -114,6 +114,9 @@
     }
   }
 
+  .hide-card{
+    display: none;
+  }
 
   .card {
     .body{
@@ -136,6 +139,11 @@
       color: #fff;
       font-weight: 400;
 
+      &:after{
+        border-color: attr(data-color);
+        content: '';
+      }
+
       .number-box {
         display: inline;
         float: left;
@@ -155,6 +163,75 @@
         margin: 0;
         padding-bottom: 6px;
         line-height: 1rem;
+        span {
+          display: block;
+          font-size: 0.6rem;
+          margin: 0;
+        }
+      }
+    }
+
+    // color list
+    .head-color-0{
+      background-color: #32acba;
+      &:after{
+        border-color: #32acba;
+      }
+    }
+
+    .head-color-1{
+      background-color: #46b8e9;
+      &:after{
+        border-color: #46b8e9;
+      }
+    }
+
+    .head-color-2{
+      background-color: #3ee9d1;
+      &:after{
+        border-color: #3ee9d1;
+      }
+    }
+
+    .head-color-3{
+      background-color: #ce43eb;
+      &:after{
+        border-color: #ce43eb;
+      }
+    }
+
+    .head-color-4{
+      background-color: #4d92eb;
+      &:after{
+        border-color: #4d92eb;
+      }
+    }
+
+    .head-color-5{
+      background-color: #46b8e9;
+      &:after{
+        border-color: #46b8e9;
+      }
+    }
+
+    .head-color-6{
+      background-color: #ab4545;
+      &:after{
+        border-color: #ab4545;
+      }
+    }
+
+    .head-color-7{
+      background-color: #654292;
+      &:after{
+        border-color: #654292;
+      }
+    }
+
+    .head-color-8{
+      background-color: #129265;
+      &:after{
+        border-color: #129265;
       }
     }
 
@@ -164,16 +241,11 @@
         line-height: 1.2rem;
       }
     }
-    .card .head h2 span {
-      display: block;
-      font-size: 0.6rem;
-      margin: 0;
-    }
+
     @include mq('phone-wide', 'min') {
       .card .head h2 span {
         font-size: 0.8rem;
       }
     }
   }
-
 }

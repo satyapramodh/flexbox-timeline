@@ -8461,7 +8461,7 @@ footer {
       flex-flow: row wrap;
       height: auto;
       margin: 0 auto;
-      width: 100%; }
+      width: 1170px; }
       .timeline .wrapper:after {
         border-left: 1px solid #bdbdbd; } }
   .timeline .card {
@@ -8514,6 +8514,8 @@ footer {
       height: auto;
       max-height: 400px;
       overflow-y: auto; } }
+  .timeline .hide-card {
+    display: none; }
   .timeline .card .body p {
     font-size: 14px;
     line-height: 18px;
@@ -8527,6 +8529,9 @@ footer {
     align-items: center;
     color: #fff;
     font-weight: 400; }
+    .timeline .card .head:after {
+      border-color: attr(data-color);
+      content: ''; }
     .timeline .card .head .number-box {
       display: inline;
       float: left;
@@ -8544,14 +8549,50 @@ footer {
       margin: 0;
       padding-bottom: 6px;
       line-height: 1rem; }
+      .timeline .card .head h2 span {
+        display: block;
+        font-size: 0.6rem;
+        margin: 0; }
+  .timeline .card .head-color-0 {
+    background-color: #32acba; }
+    .timeline .card .head-color-0:after {
+      border-color: #32acba; }
+  .timeline .card .head-color-1 {
+    background-color: #46b8e9; }
+    .timeline .card .head-color-1:after {
+      border-color: #46b8e9; }
+  .timeline .card .head-color-2 {
+    background-color: #3ee9d1; }
+    .timeline .card .head-color-2:after {
+      border-color: #3ee9d1; }
+  .timeline .card .head-color-3 {
+    background-color: #ce43eb; }
+    .timeline .card .head-color-3:after {
+      border-color: #ce43eb; }
+  .timeline .card .head-color-4 {
+    background-color: #4d92eb; }
+    .timeline .card .head-color-4:after {
+      border-color: #4d92eb; }
+  .timeline .card .head-color-5 {
+    background-color: #46b8e9; }
+    .timeline .card .head-color-5:after {
+      border-color: #46b8e9; }
+  .timeline .card .head-color-6 {
+    background-color: #ab4545; }
+    .timeline .card .head-color-6:after {
+      border-color: #ab4545; }
+  .timeline .card .head-color-7 {
+    background-color: #654292; }
+    .timeline .card .head-color-7:after {
+      border-color: #654292; }
+  .timeline .card .head-color-8 {
+    background-color: #129265; }
+    .timeline .card .head-color-8:after {
+      border-color: #129265; }
   @media only screen and (min-width: 480px) {
     .timeline .card .card .head h2 {
       font-size: 165%;
       line-height: 1.2rem; } }
-  .timeline .card .card .head h2 span {
-    display: block;
-    font-size: 0.6rem;
-    margin: 0; }
   @media only screen and (min-width: 480px) {
     .timeline .card .card .head h2 span {
       font-size: 0.8rem; } }
