@@ -8131,6 +8131,7 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+/* Media query function */
 /* Media Queries */
 /* Card sizing */
 /* Colors */
@@ -8187,12 +8188,6 @@ button.close {
 /* Border Box */
 * {
   box-sizing: border-box; }
-
-/* Fonts */
-body {
-  font-family: Roboto;
-  margin: 0;
-  overflow-x: hidden; }
 
 #timeline {
   padding: 100px 0;
@@ -8394,6 +8389,12 @@ html {
   font-size: 16px;
   font-family: 'Roboto'; }
 
+/* Fonts */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #f7f7f7; }
+
 .float-left {
   float: left; }
 
@@ -8437,3 +8438,120 @@ footer {
       width: 100px;
       max-height: 100px;
       padding: 5px; }
+
+.timeline {
+  padding: 100px 0;
+  border-top: 1px solid rgba(191, 191, 191, 0.4);
+  border-bottom: 1px solid rgba(191, 191, 191, 0.4);
+  /********* Body **********/ }
+  .timeline .wrapper {
+    position: relative;
+    margin: auto; }
+    .timeline .wrapper:after {
+      z-index: 1;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: 1px solid rgba(191, 191, 191, 0.4); }
+  @media only screen and (min-width: 1024px) {
+    .timeline .wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      height: auto;
+      margin: 0 auto;
+      width: 100%; }
+      .timeline .wrapper:after {
+        border-left: 1px solid #bdbdbd; } }
+  .timeline .card {
+    position: relative;
+    display: block;
+    margin: 10px auto 80px;
+    max-width: 94%;
+    z-index: 2; }
+  @media only screen and (min-width: 480px) {
+    .timeline .card {
+      max-width: 60%;
+      box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07); } }
+  @media only screen and (min-width: 768px) {
+    .timeline .card {
+      max-width: 40%; } }
+  @media only screen and (min-width: 1024px) {
+    .timeline .card {
+      max-width: 450px;
+      height: 400px;
+      /* TODO Add this via js */
+      margin: 90px;
+      margin-top: 45px;
+      margin-bottom: 45px; } }
+  .timeline .card:nth-child(odd) {
+    margin-right: 45px; }
+    .timeline .card:nth-child(odd) .head:after {
+      border-left-width: 15px;
+      border-left-style: solid;
+      left: 100%; }
+    .timeline .card:nth-child(odd) .head:before {
+      left: 491.5px; }
+  .timeline .card:nth-child(even) {
+    margin-left: 45px;
+    margin-top: 180px; }
+    .timeline .card:nth-child(even) .head:after {
+      border-right-width: 15px;
+      border-right-style: solid;
+      right: 100%; }
+    .timeline .card:nth-child(even) .head:before {
+      right: 489.5px; }
+  .timeline .card:nth-child(2) {
+    margin-top: 180px; }
+  .timeline .card .body {
+    background: #fff;
+    border: 1px solid rgba(191, 191, 191, 0.4);
+    border-top: 0;
+    padding: 15px; }
+  @media only screen and (min-width: 1024px) {
+    .timeline .card .body {
+      height: auto;
+      max-height: 400px;
+      overflow-y: auto; } }
+  .timeline .card .body p {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 15px; }
+  .timeline .card .body img {
+    display: block;
+    width: 100%; }
+  .timeline .card .head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 400; }
+    .timeline .card .head .number-box {
+      display: inline;
+      float: left;
+      margin: 15px;
+      padding: 10px;
+      font-size: 35px;
+      line-height: 35px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.17); }
+    .timeline .card .head h2 {
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      font-weight: inherit;
+      letter-spacing: 2px;
+      margin: 0;
+      padding-bottom: 6px;
+      line-height: 1rem; }
+  @media only screen and (min-width: 480px) {
+    .timeline .card .card .head h2 {
+      font-size: 165%;
+      line-height: 1.2rem; } }
+  .timeline .card .card .head h2 span {
+    display: block;
+    font-size: 0.6rem;
+    margin: 0; }
+  @media only screen and (min-width: 480px) {
+    .timeline .card .card .head h2 span {
+      font-size: 0.8rem; } }
