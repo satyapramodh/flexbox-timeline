@@ -6,7 +6,7 @@ http_path = "/"
 css_dir = "assets/css"
 sass_dir = "assets/css/scss"
 images_dir = "assets/images"
-javascripts_dir = "assets/javascripts"
+javascripts_dir = ""
 fonts_dir = "assets/font-awesome"
 
 output_style = :nested

@@ -6,21 +6,31 @@ function setCardStyles() {
 }
 
 function animateCards() {
+
+  if (window.cardData.data.length < window.cardCount){
+    return
+  }
+
   var windowHeight = $(window).height();
   var scrollHeight = $(window).scrollTop();
   // console.log("scrollHeight", scrollHeight);
-  $.each($(".card"), function(idx, card){
-      // console.log("idx, position, bool", idx, $(card).position().top + 400 - scrollHeight, $(card).position().top + 400 -  scrollHeight < 600);
-      var position = $($(".card")[idx]).position();
-
-      console.log("idx, position", idx, position);
-      // debugger;
-      if( (position.top + 400 - scrollHeight) < (windowHeight*0.6) ){
-        var effectClass = ((idx%2 === 0) ? "bounceInLeft" : "bounceInRight");
-        console.log("windowHeight, scrollHeight, position", windowHeight, scrollHeight, position.top);
-        $(card).removeClass("hide-card animated bounceInLeft bounceInRight").addClass("animated " + effectClass);
-      }
-  });
+  // $.each(data, function(idx, card){
+  //     // console.log("idx, position, bool", idx, $(card).position().top + 400 - scrollHeight, $(card).position().top + 400 -  scrollHeight < 600);
+  //     var position = $($(".card")[idx]).position();
+  //
+  //     console.log("idx, position", idx, position);
+  //     // debugger;
+  //     if( (position.top + 400 - scrollHeight) < (windowHeight*0.6) ){
+  //       var effectClass = ((idx%2 === 0) ? "bounceInLeft" : "bounceInRight");
+  //       console.log("windowHeight, scrollHeight, position", windowHeight, scrollHeight, position.top);
+  //       $(card).removeClass("hide-card animated bounceInLeft bounceInRight").addClass("animated " + effectClass);
+  //     }
+  // });
+  console.log("cardCount", window.cardCount);
+  $(".timeline .wrapper").append(window.cardData.data[window.cardCount]);
+  $(".card").last().addClass("bounceInLeft");
+  window.cardCount++;
+  setCardStyles();
 }
 
 $(function () {
@@ -50,194 +60,29 @@ $(function () {
   // })
 
   setCardStyles();
-  animateCards();
+  window.cardCount = 0;
 
-  var json = {
+  window.cardData = {
       "data": [
-        "<div class='card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>03</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>04</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>01</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Technology</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <img src='http://lorempixel.com/1000/500' alt='Graphic'>
-          </div>
-        </div>",
-        "<div class='card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>03</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>04</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>01</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Technology</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <img src='http://lorempixel.com/1000/500' alt='Graphic'>
-          </div>
-        </div>",
-        "<div class='card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>03</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>04</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>01</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Technology</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <img src='http://lorempixel.com/1000/500' alt='Graphic'>
-          </div>
-        </div>",
-        "<div class='card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>03</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>04</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>01</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Technology</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <img src='http://lorempixel.com/1000/500' alt='Graphic'>
-          </div>
-        </div>",
-        "<div class='card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>03</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>04</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Confidence</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe>
-          </div>
-        </div>",
-        "<div class='card hide-card'>
-          <div class='head'>
-            <div class='number-box'>
-              <span>01</span>
-            </div>
-            <h2><span class='small'>Subtitle</span> Technology</h2>
-          </div>
-          <div class='body'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-            <img src='http://lorempixel.com/1000/500' alt='Graphic'>
-          </div>
-        </div>"
+        "<div class='card animated'><div class='head'><div class='number-box'><span>03</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>04</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>01</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>03</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>04</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>01</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>03</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>04</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>01</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>03</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>04</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>01</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>03</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>04</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
+        "<div class='card animated'><div class='head'><div class='number-box'><span>01</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>"
       ]
   };
 
-  var totalObjects = json;
+  animateCards();
 
   $(window).scroll(function () {
     animateCards();
