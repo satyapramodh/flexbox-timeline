@@ -1630,6 +1630,22 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/assets\/css\/partials\/_custom.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/css\/partials\/_custom.scss",
+		"outputAbbreviatedPath": "\/assets\/css\/_custom.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/assets\/css\/partials\/_style.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -2591,6 +2607,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/assets\/javascripts\/underscore.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/javascripts\/underscore.min.js",
+		"outputAbbreviatedPath": "\/assets\/javascripts\/min\/underscore.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/config.rb": {
 		"fileType": 131072,
 		"ignore": 0,
@@ -2629,17 +2656,6 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
-		},
-	"\/underscore.min.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/underscore.min.js",
-		"outputAbbreviatedPath": "\/min\/underscore.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		}
 	},
 "hooks": [

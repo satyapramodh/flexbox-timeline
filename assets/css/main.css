@@ -8136,61 +8136,6 @@ button.close {
 /* Colors */
 /* Calculations */
 /* Placeholders */
-.number-highlighter {
-  color: darkorange;
-  font-size: 32px; }
-
-.num-stats {
-  float: right; }
-
-.num-stats > div {
-  display: block;
-  width: 100%; }
-
-.num-stats div.stat-item {
-  display: inline-block; }
-
-.float-left {
-  float: left; }
-
-.float-right {
-  float: right; }
-
-.header .title, .header .num-stats {
-  padding: 20px 15px; }
-
-html {
-  height: 100%; }
-
-footer {
-  position: relative;
-  /*right: 0;
-  bottom: 0;
-  left: 0;*/
-  display: block;
-  height: 200px;
-  padding: 25px;
-  background-color: white;
-  z-index: 9999; }
-
-footer h6 {
-  font-size: 18px;
-  font-weight: 800; }
-
-.partner-logos {
-  margin-bottom: 25px; }
-
-.partner-logos img {
-  height: 40px; }
-
-.footer-logos {
-  margin: 10px 0; }
-
-.footer-logos img {
-  width: 100px;
-  max-height: 100px;
-  padding: 5px; }
-
 @media (min-width: 1000px) {
   #timeline .demo-card:nth-child(odd) .head::after, #timeline .demo-card:nth-child(even) .head::after {
     position: absolute;
@@ -8443,3 +8388,50 @@ body {
 
 #timeline .demo-card--step8 .head::after {
   border-color: #129265; }
+
+.number-highlighter {
+  color: darkorange;
+  font-size: 32px; }
+
+.num-stats {
+  float: right; }
+
+.num-stats > div {
+  display: block;
+  width: 100%; }
+
+.num-stats div.stat-item {
+  display: inline-block; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
+.header .title, .header .num-stats {
+  padding: 20px 15px; }
+
+html {
+  height: 100%; }
+
+footer {
+  position: relative;
+  display: block;
+  height: 200px;
+  padding: 25px;
+  background-color: white;
+  z-index: 9999; }
+  footer h6 {
+    font-size: 18px;
+    font-weight: 800; }
+  footer .partner-logos {
+    margin-bottom: 25px; }
+    footer .partner-logos img {
+      height: 40px; }
+  footer .footer-logos {
+    margin: 10px 0; }
+    footer .footer-logos img {
+      width: 100px;
+      max-height: 100px;
+      padding: 5px; }
