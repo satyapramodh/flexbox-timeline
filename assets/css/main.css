@@ -8484,26 +8484,26 @@ footer {
       /* TODO Add this via js */
       margin: 90px;
       margin-top: 45px;
-      margin-bottom: 45px; } }
-  .timeline .card:nth-child(odd) {
-    margin-right: 45px; }
-    .timeline .card:nth-child(odd) .head:after {
-      border-left-width: 15px;
-      border-left-style: solid;
-      left: 100%; }
-    .timeline .card:nth-child(odd) .head:before {
-      left: 491.5px; }
-  .timeline .card:nth-child(even) {
-    margin-left: 45px;
-    margin-top: 180px; }
-    .timeline .card:nth-child(even) .head:after {
-      border-right-width: 15px;
-      border-right-style: solid;
-      right: 100%; }
-    .timeline .card:nth-child(even) .head:before {
-      right: 489.5px; }
-  .timeline .card:nth-child(2) {
-    margin-top: 180px; }
+      margin-bottom: 45px; }
+    .timeline .card:nth-child(odd) {
+      margin-right: 45px; }
+      .timeline .card:nth-child(odd) .head:after {
+        border-left-width: 15px;
+        border-left-style: solid;
+        left: 100%; }
+      .timeline .card:nth-child(odd) .head:before {
+        left: 491.5px; }
+    .timeline .card:nth-child(even) {
+      margin-left: 45px;
+      margin-top: 180px; }
+      .timeline .card:nth-child(even) .head:after {
+        border-right-width: 15px;
+        border-right-style: solid;
+        right: 100%; }
+      .timeline .card:nth-child(even) .head:before {
+        right: 489.5px; }
+    .timeline .card:nth-child(2) {
+      margin-top: 180px; } }
   .timeline .card .body {
     background: #fff;
     border: 1px solid rgba(191, 191, 191, 0.4);

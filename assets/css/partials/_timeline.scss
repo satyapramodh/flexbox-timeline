@@ -61,40 +61,40 @@
       margin-top: 45px;
       margin-bottom: 45px;
     }
-  }
 
-  .card:nth-child(odd){
-    margin-right: 45px;
-    .head{
-      &:after{
-        border-left-width: 15px;
-        border-left-style: solid;
-        left: 100%;
-      }
-      &:before {
-        left: 491.5px;
-      }
-    }
-  }
-
-  .card:nth-child(even) {
-    margin-left: 45px;
-    margin-top: 180px;
-    .head{
-      &:after {
-        border-right-width: 15px;
-        border-right-style: solid;
-        right: 100%;
-      }
-
-      &:before {
-        right: 489.5px;
+    .card:nth-child(odd){
+      margin-right: 45px;
+      .head{
+        &:after{
+          border-left-width: 15px;
+          border-left-style: solid;
+          left: 100%;
+        }
+        &:before {
+          left: 491.5px;
+        }
       }
     }
-  }
 
-  .card:nth-child(2) {
-    margin-top: 180px;
+    .card:nth-child(even) {
+      margin-left: 45px;
+      margin-top: 180px;
+      .head{
+        &:after {
+          border-right-width: 15px;
+          border-right-style: solid;
+          right: 100%;
+        }
+
+        &:before {
+          right: 489.5px;
+        }
+      }
+    }
+
+    .card:nth-child(2) {
+      margin-top: 180px;
+    }
   }
 
 
