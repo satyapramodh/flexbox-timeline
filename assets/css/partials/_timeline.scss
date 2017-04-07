@@ -31,6 +31,7 @@
       }
     }
   }
+  
 
   .card{
     position: relative;
@@ -56,7 +57,7 @@
   @include mq('tablet-wide', 'min'){
     .card{
       max-width: 450px;
-      height: 400px; /* TODO Add this via js */
+      // height: 400px; /* TODO Add this via js */
       margin: 90px;
       margin-top: 45px;
       margin-bottom: 45px;
@@ -97,6 +98,48 @@
     }
   }
 
+  // styles for dots on the line generated for the timeline
+  @include mq('tablet-wide', 'min') {
+    .card:nth-child(odd) .head::after, .card:nth-child(even) .head::after {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+
+    .card:nth-child(odd) .head::before, .card:nth-child(even) .head::before {
+      position: absolute;
+      content: "";
+      width: 9px;
+      height: 9px;
+      background-color: #46b8e9; // bdbdbd
+      border-radius: 9px;
+      // box-shadow: 0px 0px 2px 8px #f7f7f7;
+
+
+      -moz-animation-duration: 0.8s;
+      -webkit-animation-duration: 0.8s;
+      -moz-animation-name: changeShadow;
+      -webkit-animation-name: changeShadow;
+      -moz-animation-iteration-count: infinite;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-direction: alternate;
+      -webkit-animation-direction: alternate;
+    }
+  }
+
+  @-webkit-keyframes changeShadow{
+    from {
+      box-shadow: 0px 0px 2px 8px #f7f7f7;
+    }
+
+    to {
+      box-shadow: 0px 0px 2px 8px #d6e7ef;
+    }
+  }
+
 
   /********* Body **********/
   .card .body {
@@ -104,12 +147,18 @@
     border: 1px solid rgba(191, 191, 191, 0.4);
     border-top: 0;
     padding: 15px;
+    img{
+      min-height: 200px;
+      max-height: 400px;
+      height: auto;
+      width: 100%;
+    }
   }
 
   @include mq('tablet-wide', 'min'){
     .card .body {
       height: auto;
-      max-height: 400px;
+      // max-height: 400px;
       overflow-y: auto;
     }
   }
