@@ -1,7 +1,20 @@
+.phase1-color{
+  background-color: $phase1-color;
+}
+
+.phase2-color{
+  background-color: $phase2-color;
+}
+
+.phase3-color{
+  background-color: $phase3-color;
+}
+
 .timeline{
   padding: 100px 0;
   border-top: 1px solid rgba(191, 191, 191, 0.4);
   border-bottom: 1px solid rgba(191, 191, 191, 0.4);
+  position: relative;
 
   // wrapper
   .wrapper{
@@ -37,9 +50,14 @@
     top: 10px;
     right: 10px;
     ul{
+      padding: 5px;
       list-style-type: none;
+      width: 200px;
+      z-index: 3;
+      @extend %timeline-shadows;
       li{
-        border: 1px solid gray;
+        padding: 10px;
+        text-transform: capitalize;
       }
     }
   }
@@ -47,15 +65,17 @@
   .phase-label{
     display: block;
     position: absolute;
-    background-color: #bdbac1;
     color: white;
-    margin-left: 46%;
+    margin-left: 47%;
     height: 30px;
     padding: 10px;
-    z-index: 2;
-    font-size: 2rem;
+    z-index: 5;
+    font-size: 1.5rem;
     line-height: 1rem;
+
+    @extend %timeline-shadows;
   }
+
   .card{
     position: relative;
     display: block;
@@ -68,12 +88,13 @@
     -moz-animation-duration: 1s;
     -moz-animation-delay: 1s;
     -moz-animation-iteration-count: 1;
+    @extend %timeline-shadows;
   }
 
   @include mq('phone-wide', 'min'){
     .card{
       max-width: 60%;
-      box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
+      // box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
     }
   }
 

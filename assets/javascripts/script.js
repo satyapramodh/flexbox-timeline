@@ -4,10 +4,11 @@ function addNextCard() {
   }
 
   if(cardCount % 5 === 0){
-    $(".timeline .wrapper ").append("<div class='phase-label'>Phase 1</div>")
+    $(".timeline .wrapper ").append("<div class='phase-label phase"+ phaseCount + "-color'>Phase "+phaseCount+"</div>");
+    phaseCount++;
     $(".phase-label").last().css({top : $(".timeline .wrapper ").height() })
   }
-  // console.log("new height", $(".timeline .wrapper ").height());
+
   $(".timeline .wrapper ").append(cardData.data[cardCount]);
   $(".card").last().addClass(
     ((cardCount%2 === 0) ? "bounceInLeft even" : "bounceInRight odd")
@@ -25,7 +26,7 @@ function addNextCard() {
 
 $(function () {
   cardCount = 0;
-
+  phaseCount = 1;
   cardData = {
       "data": [
         "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",

@@ -35,11 +35,17 @@ body {
       display: inline-block;
     }
     .number-highlighter{
-      color: darkorange;
+      color: $highlight-orange;
       font-size: 3.5rem;
       font-weight: bold;
     }
   }
+}
+
+%timeline-shadows{
+  -webkit-box-shadow: 0 10px 20px -4px #aaa;
+   -moz-box-shadow: 0 10px 20px -4px #aaa;
+        box-shadow: 0 10px 20px -4px #aaa;
 }
 
 footer{
