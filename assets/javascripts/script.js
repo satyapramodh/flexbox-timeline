@@ -3,10 +3,16 @@ function addNextCard() {
     return;
   }
 
+  if(cardCount % 5 === 0){
+    $(".timeline .wrapper ").append("<div class='phase-label'>Phase 1</div>")
+    $(".phase-label").last().css({top : $(".timeline .wrapper ").height() })
+  }
+  // console.log("new height", $(".timeline .wrapper ").height());
   $(".timeline .wrapper ").append(cardData.data[cardCount]);
   $(".card").last().addClass(
-    ((cardCount%2 === 0) ? "bounceInLeft" : "bounceInRight")
-  );
+    ((cardCount%2 === 0) ? "bounceInLeft even" : "bounceInRight odd")
+  ).attr("order", cardCount+1);
+
   cardCount++;
   var heights = {};
   heights['head'] = $(".card").last().find(".head").outerHeight();
@@ -46,6 +52,6 @@ $(function () {
   addNextCard();
   addNextCard();
 
-  $('.timeline').timelify();
+  $('.timeline .wrapper').timelify();
 
 });

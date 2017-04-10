@@ -8212,12 +8212,37 @@ footer {
       width: 1170px; }
       .timeline .wrapper:after {
         border-left: 1px solid #bdbdbd; } }
+  .timeline .phase-details {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+    .timeline .phase-details ul {
+      list-style-type: none; }
+      .timeline .phase-details ul li {
+        border: 1px solid gray; }
+  .timeline .phase-label {
+    display: block;
+    position: absolute;
+    background-color: #bdbac1;
+    color: white;
+    margin-left: 46%;
+    height: 30px;
+    padding: 10px;
+    z-index: 2;
+    font-size: 2rem;
+    line-height: 1rem; }
   .timeline .card {
     position: relative;
     display: block;
     margin: 10px auto 80px;
     max-width: 94%;
-    z-index: 2; }
+    z-index: 2;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-duration: 1s;
+    -moz-animation-delay: 1s;
+    -moz-animation-iteration-count: 1; }
   @media only screen and (min-width: 480px) {
     .timeline .card {
       max-width: 60%;
@@ -8231,34 +8256,32 @@ footer {
       margin: 90px;
       margin-top: 45px;
       margin-bottom: 45px; }
-    .timeline .card:nth-child(odd) {
+    .timeline div.card.even {
       margin-right: 45px; }
-      .timeline .card:nth-child(odd) .head:after {
+      .timeline div.card.even .head:after {
         border-left-width: 15px;
         border-left-style: solid;
         left: 100%; }
-      .timeline .card:nth-child(odd) .head:before {
+      .timeline div.card.even .head:before {
         left: 491.5px; }
-    .timeline .card:nth-child(even) {
+    .timeline div.card.odd {
       margin-left: 45px;
       margin-top: 180px; }
-      .timeline .card:nth-child(even) .head:after {
+      .timeline div.card.odd .head:after {
         border-right-width: 15px;
         border-right-style: solid;
         right: 100%; }
-      .timeline .card:nth-child(even) .head:before {
-        right: 489.5px; }
-    .timeline .card:nth-child(2) {
-      margin-top: 180px; } }
+      .timeline div.card.odd .head:before {
+        right: 489.5px; } }
   @media only screen and (min-width: 1024px) {
-    .timeline .card:nth-child(odd) .head::after, .timeline .card:nth-child(even) .head::after {
+    .timeline div.card.odd .head::after, .timeline .card.even .head::after {
       position: absolute;
       content: "";
       width: 0;
       height: 0;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent; }
-    .timeline .card:nth-child(odd) .head::before, .timeline .card:nth-child(even) .head::before {
+    .timeline div.card.odd .head::before, .timeline .card.even .head::before {
       position: absolute;
       content: "";
       width: 9px;

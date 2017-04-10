@@ -31,14 +31,43 @@
       }
     }
   }
-  
 
+  .phase-details{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    ul{
+      list-style-type: none;
+      li{
+        border: 1px solid gray;
+      }
+    }
+  }
+
+  .phase-label{
+    display: block;
+    position: absolute;
+    background-color: #bdbac1;
+    color: white;
+    margin-left: 46%;
+    height: 30px;
+    padding: 10px;
+    z-index: 2;
+    font-size: 2rem;
+    line-height: 1rem;
+  }
   .card{
     position: relative;
     display: block;
     margin: 10px auto 80px;
     max-width: 94%;
     z-index: 2;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-duration: 1s;
+    -moz-animation-delay: 1s;
+    -moz-animation-iteration-count: 1;
   }
 
   @include mq('phone-wide', 'min'){
@@ -63,7 +92,7 @@
       margin-bottom: 45px;
     }
 
-    .card:nth-child(odd){
+    div.card.even{
       margin-right: 45px;
       .head{
         &:after{
@@ -77,7 +106,7 @@
       }
     }
 
-    .card:nth-child(even) {
+    div.card.odd {
       margin-left: 45px;
       margin-top: 180px;
       .head{
@@ -93,14 +122,14 @@
       }
     }
 
-    .card:nth-child(2) {
-      margin-top: 180px;
-    }
+    // div.card.offset {
+    //   margin-top: 180px;
+    // }
   }
 
   // styles for dots on the line generated for the timeline
   @include mq('tablet-wide', 'min') {
-    .card:nth-child(odd) .head::after, .card:nth-child(even) .head::after {
+    div.card.odd .head::after, .card.even .head::after {
       position: absolute;
       content: "";
       width: 0;
@@ -109,7 +138,7 @@
       border-bottom: 15px solid transparent;
     }
 
-    .card:nth-child(odd) .head::before, .card:nth-child(even) .head::before {
+    div.card.odd .head::before, .card.even .head::before {
       position: absolute;
       content: "";
       width: 9px;

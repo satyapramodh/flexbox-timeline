@@ -23,7 +23,7 @@ $.fn.timelify = function(options){
 	oldScrollPos = 0;
 	window.addEventListener('scroll', function(){
 		var scrollPos = $(window).scrollTop();
-		if((scrollPos > $(elem).offset().top - 600)  && Math.abs(oldScrollPos - scrollPos) >  $(window).height()*0.2){
+		if((scrollPos > $(elem).offset().top - 800)  && Math.abs(oldScrollPos - scrollPos) >  $(window).height()*0.4){
 			oldScrollPos = scrollPos;
 			addNextCard();
 		}
