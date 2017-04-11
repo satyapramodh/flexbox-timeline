@@ -3,13 +3,15 @@ function addNextCard() {
     return;
   }
 
-  if(cardCount % 5 === 0){
-    $(".timeline .wrapper ").append("<div class='phase-label phase"+ phaseCount + "-color'>Phase "+phaseCount+"</div>");
-    phaseCount++;
-    $(".phase-label").last().css({top : $(".timeline .wrapper ").height() })
-  }
+  // if(phaseCount !== cardData.data[cardCount].phase){
+  //   $(".timeline .wrapper ").append("<div class='phase-label phase" + cardData.data[cardCount].phase + "-color'>Phase " + cardData.data[cardCount].phase + "</div>");
+  //   phaseCount = cardData.data[cardCount].phase;
+  //   $(".phase-label").last().css({top : $(".timeline .wrapper ").height() })
+  // }
 
-  $(".timeline .wrapper ").append(cardData.data[cardCount]);
+  var html    = cardTemplate(cardData.data[cardCount]);
+
+  $(".timeline .wrapper ").append(html);
   $(".card").last().addClass(
     ((cardCount%2 === 0) ? "bounceInLeft even" : "bounceInRight odd")
   ).attr("order", cardCount+1);
@@ -22,37 +24,93 @@ function addNextCard() {
   console.log(cardCount, heights['head'], heights['body']);
   $(".card").last().height(heights['head'] + heights['body']);
   $(".card").last().find(".head").addClass("head-color-" + cardCount%8);
+
+  if(phaseCount !== cardData.data[cardCount].phase){
+    $(".timeline .wrapper ").append("<div class='phase-label phase" + cardData.data[cardCount].phase + "-color'>Phase " + cardData.data[cardCount].phase + "</div>");
+    phaseCount = cardData.data[cardCount].phase;
+    console.log("top", $(".card").last().position().top);
+    // need some offset on top of the position.top
+    $(".phase-label").last().css({top : $(".card").last().position().top })
+  }
 }
 
 $(function () {
+
+  // globals
+
+  // keep track of current card count
   cardCount = 0;
-  phaseCount = 1;
+  // keep track of current phase count
+  phaseCount = 0;
+
+  // define the card template
+  cardSourceHTML   = $(".card-template").html();
+  cardTemplate = Handlebars.compile(cardSourceHTML);
+
+  // json card data
+  // Current properties of a card are:
+  // Properties:
+  // num for the year/phase?
+  // subtitle
+  // title
+  // body: non-HTML text
+  // img: img url
+  // iframe: iframe url
+  // phase: num
   cardData = {
       "data": [
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2020</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2030</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2040</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/600' alt='Graphic'></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2030</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2040</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2030</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2040</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2030</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2040</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2030</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2040</span></div><h2><span class='small'>Subtitle</span> Confidence</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><iframe width='100%' height='315' src='https://www.youtube.com/embed/DiTECkLZ8HM' frameborder='0' allowfullscreen></iframe></div></div>",
-        "<div class='card animated'><div class='head'><div class='number-box'><span>2010</span></div><h2><span class='small'>Subtitle</span> Technology</h2></div><div class='body'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.</p><img src='http://lorempixel.com/1000/500' alt='Graphic'></div></div>"
+        {
+          num: 2010,
+          subtitle: "subtitle",
+          title: "Technology",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          img: "http://lorempixel.com/1000/500",
+          phase: 1
+        },
+        {
+          num: 2011,
+          subtitle: "Pss.. Here is the scoop",
+          title: "Abstract",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          img: "http://lorempixel.com/800/500",
+          phase: 1
+        },
+        {
+          num: 2011,
+          subtitle: "Pss.. Here is the scoop",
+          title: "Abstract",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          iframe: "https://www.youtube.com/embed/DiTECkLZ8HM",
+          phase: 1
+        },
+        {
+          num: 2011,
+          subtitle: "Pss.. Here is the scoop",
+          title: "Abstract",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          iframe: "https://www.youtube.com/embed/DiTECkLZ8HM",
+          img: "http://lorempixel.com/800/500",
+          phase: 2
+        },
+        {
+          num: 2012,
+          subtitle: "Pss.. Here is the scoop",
+          title: "Abstract",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          img: "http://lorempixel.com/800/500",
+          phase: 3
+        },
       ]
   };
 
+  // init the timeline with 3 cards
   addNextCard();
   addNextCard();
   addNextCard();
 
+  // setup the timelify plugin
+  // This is a modified timelify, in that it calls addNextCard()
+  // when a scroll is triggered with a bit of a gap(the height of a card)
   $('.timeline .wrapper').timelify();
 
 });

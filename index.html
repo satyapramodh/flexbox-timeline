@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Hello world 3</title>
+    <title>Timeline</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,7 +106,37 @@
         <img src="assets/images/logo31.png" />
       </div>
     </footer>
+
+    <script class="card-template" type="text/x-handlebars-template">
+      <div class='card animated'>
+        <div class='head'>
+          <div class='number-box'>
+            <span>{{num}}</span>
+          </div>
+          <h2>
+            <span class='small'>{{subtitle}}</span> {{title}}
+          </h2>
+        </div>
+
+        <div class='body'>
+          <p>
+            {{body}}
+          </p>
+          {{#if img}}
+            <img src='{{img}}' alt='Graphic' />
+          {{/if}}
+          {{#if iframe}}
+            <iframe width='100%' height='315'
+            src='{{iframe}}' frameborder='0'
+            allowfullscreen></iframe>
+          {{/if}}
+        </div>
+      </div>
+    </script>
+
+
     <script type="text/javascript" src="assets/javascripts/underscore.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
     <script type="text/javascript" src="assets/javascripts/script.js"></script>
     <script type="text/javascript" src="assets/javascripts/timelify.js"></script>
   </body>
