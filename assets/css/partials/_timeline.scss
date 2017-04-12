@@ -11,6 +11,7 @@
 }
 
 .timeline{
+  background-color: #eaebec;
   @include mq('tablet', 'min'){
     padding: 100px 0;
   }
@@ -120,6 +121,7 @@
     -moz-animation-delay: 1s;
     -moz-animation-iteration-count: 1;
     @extend %timeline-shadows;
+    border: 1px solid #ddd;
   }
 
   @include mq('phone-wide', 'min'){
@@ -264,6 +266,7 @@
 
   .card {
     .body{
+      padding: 0 20px 20px 20px;
       p {
         font-size: 14px;
         line-height: 18px;
@@ -274,9 +277,16 @@
         display: block;
         width: 100%;
       }
+      .highlight-num{
+        color: $highlight-orange;
+        font-size: 40px;
+        text-align: center;
+        margin: 10px 0;
+      }
     }
 
     .head {
+      padding: 20px 20px 0 20px;
       position: relative;
       display: flex;
       align-items: center;
@@ -284,29 +294,30 @@
       font-weight: 400;
 
       &:after{
-        border-color: attr(data-color);
+        border-color: #ddd;
         content: '';
       }
 
       .number-box {
-        display: inline;
+        display: block;
         float: left;
-        margin: 15px;
-        padding: 10px;
-        font-size: 35px;
-        line-height: 35px;
-        font-weight: 600;
+        margin: 10px;
+        padding: 5px;
+        font-size: 16px;
+        line-height: 10px;
+        font-weight: 300;
         background: rgba(0, 0, 0, 0.17);
       }
 
       h2 {
         text-transform: uppercase;
-        font-size: 1.3rem;
-        font-weight: inherit;
-        letter-spacing: 2px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: block;
         margin: 0;
         padding-bottom: 6px;
-        line-height: 1rem;
+        line-height: 2.5rem;
+        color: black;
         span {
           display: block;
           font-size: 0.6rem;
@@ -316,6 +327,12 @@
     }
 
     // color list
+    .head-color-white{
+      background-color: white;
+      &:after{
+        border-color: white;
+      }
+    }
     .head-color-0{
       background-color: #32acba;
       &:after{

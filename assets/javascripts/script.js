@@ -40,7 +40,8 @@ function addNextCard() {
   }
 
   // add card head color
-  lastCard.find(".head").addClass("head-color-" + cardCount%8);
+  //  + cardCount%8
+  lastCard.find(".head").addClass("head-color-white");
 
   // add phase label later so the card height can be used to determine the offset
   // for the label

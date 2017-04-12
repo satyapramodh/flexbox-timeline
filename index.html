@@ -110,15 +110,14 @@
     <script class="card-template" type="text/x-handlebars-template">
       <div class='card animated'>
         <div class='head'>
-          <div class='number-box'>
-            <span>{{gsx$num.$t}}</span>
-          </div>
           <h2>
-            <span class='small'>{{gsx$subtitle.$t}}</span> {{gsx$title.$t}}
+            <!-- <span class='small'>{{gsx$subtitle.$t}}</span>  -->
+            {{gsx$title.$t}}
           </h2>
         </div>
 
         <div class='body'>
+          <div class='small highlight-num'>{{gsx$num.$t}}</div>
           <p>
             {{gsx$body.$t}}
           </p>
@@ -130,6 +129,10 @@
             src='{{gsx$iframe.$t}}' frameborder='0'
             allowfullscreen></iframe>
           {{/if}}
+
+          <div class='number-box'>
+            <span>{{gsx$year.$t}}</span>
+          </div>
         </div>
       </div>
     </script>

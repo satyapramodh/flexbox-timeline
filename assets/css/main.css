@@ -3397,7 +3397,7 @@ body {
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
-  background-color: #fff; }
+  background-color: #f7f7f7; }
 
 input,
 button,
@@ -3434,7 +3434,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857;
-  background-color: #fff;
+  background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4543,7 +4543,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #fff; }
+    background-color: #f7f7f7; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -5931,7 +5931,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #fff;
+      background-color: #f7f7f7;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -5989,7 +5989,7 @@ tbody.collapse.in {
     .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus,
     .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #fff; } }
+      border-bottom-color: #f7f7f7; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -6652,7 +6652,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857;
-  background-color: #fff;
+  background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -8243,6 +8243,7 @@ footer {
   background-color: #4e8ecc; }
 
 .timeline {
+  background-color: #eaebec;
   overflow: auto;
   border-top: 1px solid rgba(191, 191, 191, 0.4);
   border-bottom: 1px solid rgba(191, 191, 191, 0.4);
@@ -8321,7 +8322,8 @@ footer {
     -webkit-animation-iteration-count: 1;
     -moz-animation-duration: 1s;
     -moz-animation-delay: 1s;
-    -moz-animation-iteration-count: 1; }
+    -moz-animation-iteration-count: 1;
+    border: 1px solid #ddd; }
   @media only screen and (min-width: 480px) {
     .timeline .card {
       max-width: 60%; } }
@@ -8404,43 +8406,56 @@ footer {
       overflow-y: auto; } }
   .timeline .hide-card {
     display: none; }
-  .timeline .card .body p {
-    font-size: 14px;
-    line-height: 18px;
-    margin-bottom: 15px; }
-  .timeline .card .body img {
-    display: block;
-    width: 100%; }
+  .timeline .card .body {
+    padding: 0 20px 20px 20px; }
+    .timeline .card .body p {
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 15px; }
+    .timeline .card .body img {
+      display: block;
+      width: 100%; }
+    .timeline .card .body .highlight-num {
+      color: #e66e2b;
+      font-size: 40px;
+      text-align: center;
+      margin: 10px 0; }
   .timeline .card .head {
+    padding: 20px 20px 0 20px;
     position: relative;
     display: flex;
     align-items: center;
     color: #fff;
     font-weight: 400; }
     .timeline .card .head:after {
-      border-color: attr(data-color);
+      border-color: #ddd;
       content: ''; }
     .timeline .card .head .number-box {
-      display: inline;
+      display: block;
       float: left;
-      margin: 15px;
-      padding: 10px;
-      font-size: 35px;
-      line-height: 35px;
-      font-weight: 600;
+      margin: 10px;
+      padding: 5px;
+      font-size: 16px;
+      line-height: 10px;
+      font-weight: 300;
       background: rgba(0, 0, 0, 0.17); }
     .timeline .card .head h2 {
       text-transform: uppercase;
-      font-size: 1.3rem;
-      font-weight: inherit;
-      letter-spacing: 2px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: block;
       margin: 0;
       padding-bottom: 6px;
-      line-height: 1rem; }
+      line-height: 2.5rem;
+      color: black; }
       .timeline .card .head h2 span {
         display: block;
         font-size: 0.6rem;
         margin: 0; }
+  .timeline .card .head-color-white {
+    background-color: white; }
+    .timeline .card .head-color-white:after {
+      border-color: white; }
   .timeline .card .head-color-0 {
     background-color: #32acba; }
     .timeline .card .head-color-0:after {
