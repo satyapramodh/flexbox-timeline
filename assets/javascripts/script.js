@@ -3,12 +3,6 @@ function addNextCard() {
     return;
   }
 
-  // if(phaseCount !== cardData.data[cardCount].phase){
-  //   $(".timeline .wrapper ").append("<div class='phase-label phase" + cardData.data[cardCount].phase + "-color'>Phase " + cardData.data[cardCount].phase + "</div>");
-  //   phaseCount = cardData.data[cardCount].phase;
-  //   $(".phase-label").last().css({top : $(".timeline .wrapper ").height() })
-  // }
-
   var html    = cardTemplate(cardData.data[cardCount]);
 
   $(".timeline .wrapper ").append(html);
@@ -21,16 +15,21 @@ function addNextCard() {
   heights['head'] = $(".card").last().find(".head").outerHeight();
   heights['body'] = $(".card").last().find(".body").outerHeight();
 
-  console.log(cardCount, heights['head'], heights['body']);
+  // console.log(cardCount, heights['head'], heights['body']);
   $(".card").last().height(heights['head'] + heights['body']);
   $(".card").last().find(".head").addClass("head-color-" + cardCount%8);
 
-  if(phaseCount !== cardData.data[cardCount].phase){
-    $(".timeline .wrapper ").append("<div class='phase-label phase" + cardData.data[cardCount].phase + "-color'>Phase " + cardData.data[cardCount].phase + "</div>");
-    phaseCount = cardData.data[cardCount].phase;
-    console.log("top", $(".card").last().position().top);
+  // add phase label later so the card height can be used to determine the offset
+  // for the label
+  if(phaseCount !== cardData.data[cardCount-1].phase){
+    $(".timeline .wrapper ").append("<div class='phase-label phase" + ((cardData.data[cardCount-1].phase%3) + 1) + "-color'>Phase " + cardData.data[cardCount-1].phase + "</div>");
+    phaseCount = cardData.data[cardCount-1].phase;
     // need some offset on top of the position.top
-    $(".phase-label").last().css({top : $(".card").last().position().top })
+    var offsetTop = $(".card").last().position().top;
+    // because the position top is the same for 1,2 and 3,4 pairs
+    // and only margin top changes between these pairs
+    var offsetTopMargin = parseInt($(".card").last().css("margin-top"));
+    $(".phase-label").last().css({top : (offsetTop == 0) ? offsetTop : offsetTop + offsetTopMargin - 50 })
   }
 }
 
@@ -68,7 +67,7 @@ $(function () {
           phase: 1
         },
         {
-          num: 2011,
+          num: 2010,
           subtitle: "Pss.. Here is the scoop",
           title: "Abstract",
           body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
@@ -76,7 +75,7 @@ $(function () {
           phase: 1
         },
         {
-          num: 2011,
+          num: 2010,
           subtitle: "Pss.. Here is the scoop",
           title: "Abstract",
           body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
@@ -99,6 +98,14 @@ $(function () {
           body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
           img: "http://lorempixel.com/800/500",
           phase: 3
+        },
+        {
+          num: 2013,
+          subtitle: "Pss.. Here is the scoop",
+          title: "Abstract",
+          body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt doloribus consequatur, laudantium odio dolorum laboriosam.",
+          img: "http://lorempixel.com/800/500",
+          phase: 4
         },
       ]
   };

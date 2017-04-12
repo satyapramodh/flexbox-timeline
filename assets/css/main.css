@@ -8238,7 +8238,8 @@ footer {
       z-index: 3; }
       .timeline .phase-details ul li {
         padding: 10px;
-        text-transform: capitalize; }
+        text-transform: capitalize;
+        color: white; }
   .timeline .phase-label {
     display: block;
     position: absolute;
