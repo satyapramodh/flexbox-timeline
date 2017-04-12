@@ -8202,11 +8202,16 @@ footer {
   background-color: #4e8ecc; }
 
 .timeline {
-  padding: 100px 0;
   border-top: 1px solid rgba(191, 191, 191, 0.4);
   border-bottom: 1px solid rgba(191, 191, 191, 0.4);
   position: relative;
   /********* Body **********/ }
+  @media only screen and (min-width: 768px) {
+    .timeline {
+      padding: 100px 0; } }
+  @media only screen and (min-width: 768px) {
+    .timeline {
+      padding: 50px 0; } }
   .timeline .wrapper {
     position: relative;
     margin: auto; }
@@ -8227,29 +8232,42 @@ footer {
       width: 1170px; }
       .timeline .wrapper:after {
         border-left: 1px solid #bdbdbd; } }
-  .timeline .phase-details {
-    position: absolute;
-    top: 10px;
-    right: 10px; }
-    .timeline .phase-details ul {
-      padding: 5px;
-      list-style-type: none;
-      width: 200px;
-      z-index: 3; }
-      .timeline .phase-details ul li {
-        padding: 10px;
-        text-transform: capitalize;
-        color: white; }
+  @media only screen and (max-width: 767px) {
+    .timeline .wrapper {
+      margin-top: 100px; } }
+  @media only screen and (min-width: 768px) {
+    .timeline .phase-details {
+      position: absolute;
+      top: 10px;
+      right: 10px; }
+      .timeline .phase-details ul {
+        width: 200px; } }
+  @media only screen and (max-width: 767px) {
+    .timeline .phase-details {
+      margin: 25px; } }
+  .timeline .phase-details ul {
+    padding: 5px;
+    list-style-type: none;
+    z-index: 3; }
+    .timeline .phase-details ul li {
+      padding: 10px;
+      text-transform: capitalize;
+      color: white; }
   .timeline .phase-label {
     display: block;
     position: absolute;
     color: white;
-    margin-left: 47%;
     height: 30px;
     padding: 10px;
     z-index: 5;
     font-size: 1.5rem;
     line-height: 1rem; }
+    @media only screen and (min-width: 768px) {
+      .timeline .phase-label {
+        margin-left: 47%; } }
+    @media only screen and (max-width: 767px) {
+      .timeline .phase-label {
+        margin-left: 44%; } }
   .timeline .card {
     position: relative;
     display: block;
@@ -8271,6 +8289,7 @@ footer {
   @media only screen and (min-width: 1024px) {
     .timeline .card {
       max-width: 450px;
+      width: 450px;
       margin: 90px;
       margin-top: 45px;
       margin-bottom: 45px; }
