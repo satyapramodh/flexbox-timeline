@@ -8132,6 +8132,47 @@ button.close {
   .hidden-print {
     display: none !important; } }
 /* Media query function */
+/*
+ *  Usage:
+ *
+      <div class="sk-rotating-plane"></div>
+ *
+ */
+.sk-rotating-plane {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  margin: 40px auto;
+  animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  transition: background-color 0.5s fade-in; }
+
+@-webkit-keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    background-color: #cabd77; }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    background-color: #73c2e1; }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    background-color: #4e8ecc; } }
+@keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    background-color: #cabd77; }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    background-color: #73c2e1; }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    background-color: #4e8ecc; } }
 html {
   height: 100%;
   font-size: 16px;
@@ -8202,6 +8243,7 @@ footer {
   background-color: #4e8ecc; }
 
 .timeline {
+  overflow: auto;
   border-top: 1px solid rgba(191, 191, 191, 0.4);
   border-bottom: 1px solid rgba(191, 191, 191, 0.4);
   position: relative;
@@ -8209,7 +8251,7 @@ footer {
   @media only screen and (min-width: 768px) {
     .timeline {
       padding: 100px 0; } }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (max-width: 767px) {
     .timeline {
       padding: 50px 0; } }
   .timeline .wrapper {
@@ -8286,6 +8328,14 @@ footer {
   @media only screen and (min-width: 768px) {
     .timeline .card {
       max-width: 40%; } }
+  @media only screen and (max-width: 767px) {
+    .timeline .card {
+      height: 400px; }
+      .timeline .card .head {
+        height: 85px; }
+      .timeline .card .body {
+        height: 315px;
+        overflow: auto; } }
   @media only screen and (min-width: 1024px) {
     .timeline .card {
       max-width: 450px;

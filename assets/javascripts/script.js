@@ -1,5 +1,6 @@
 /* JsHint enabled via Codekit */
 /* global Handlebars */
+/* global _ */
 
 // keep track of current card count
 var cardCount = 0;
@@ -11,6 +12,7 @@ var cardSourceHTML   = $(".card-template").html();
 var cardTemplate = Handlebars.compile(cardSourceHTML);
 
 var cardData = {};
+var cards = [];
 
 
 function addNextCard() {
@@ -18,21 +20,26 @@ function addNextCard() {
     return;
   }
 
-  var html    = cardTemplate(cardData.data[cardCount]);
+  // var html    = cardTemplate(cardData.data[cardCount]);
 
-  $(".timeline .wrapper ").append(html);
+  $(".timeline .wrapper ").append(cards[cardCount]);
   var lastCard = $(".card").last();
   lastCard.addClass(
     ((cardCount%2 === 0) ? "bounceInLeft even" : "bounceInRight odd")
   ).attr("order", cardCount+1);
 
   cardCount++;
-  var heights = {};
-  heights.head = lastCard.find(".head").outerHeight();
-  heights.body = lastCard.find(".body").outerHeight();
 
-  // console.log(cardCount, heights['head'], heights['body']);
-  lastCard.height(heights.head + heights.body);
+  if(window.innerWidth > 768){
+    var heights = {};
+    heights.head = lastCard.find(".head").outerHeight();
+    heights.body = lastCard.find(".body").outerHeight();
+
+    // console.log(cardCount, heights['head'], heights['body']);
+    lastCard.height(heights.head + heights.body);
+  }
+
+  // add card head color
   lastCard.find(".head").addClass("head-color-" + cardCount%8);
 
   // add phase label later so the card height can be used to determine the offset
@@ -49,16 +56,33 @@ function addNextCard() {
   }
 }
 
+function preloadCards() {
+  _.each(cardData.data, function (item) {
+    cards.push(cardTemplate(item));
+  });
+}
+
 $(function () {
 
+  // https://coderwall.com/p/duapqq/use-a-google-spreadsheet-as-your-json-backend
+  // TODO: since its async, add a loading div
   $.getJSON("https://spreadsheets.google.com/feeds/list/1wU78mvGOs58mmtBP3W-Ehclxke1nr1oMtlq7jXWOch8/od6/public/values?alt=json", function(data) {
     //first row "title" column
     cardData.data = data.feed.entry;
-
+    console.log(cardData.data);
     // init the timeline with 3 cards
+
+    preloadCards();
+
+    $(".sk-rotating-plane").remove();
     addNextCard();
     addNextCard();
     addNextCard();
+
+    // setup the timelify plugin
+    // This is a modified timelify, in that it calls addNextCard()
+    // when a scroll is triggered with a bit of a gap(the height of a card)
+    $('.timeline .wrapper').timelify();
   });
 
   // json card data
@@ -124,10 +148,5 @@ $(function () {
   //       },
   //     ]
   // };
-
-  // setup the timelify plugin
-  // This is a modified timelify, in that it calls addNextCard()
-  // when a scroll is triggered with a bit of a gap(the height of a card)
-  $('.timeline .wrapper').timelify();
 
 });

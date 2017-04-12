@@ -1,0 +1,51 @@
+/*
+ *  Usage:
+ *
+      <div class="sk-rotating-plane"></div>
+ *
+ */
+
+.sk-rotating-plane {
+  width: $spinkit-size;
+  height: $spinkit-size;
+  background-color: $spinkit-spinner-color;
+  margin: $spinkit-spinner-margin;
+  animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  transition: background-color 0.5s fade-in;
+}
+
+@-webkit-keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            background-color: $phase1-color;
+        }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            background-color: $phase2-color;
+        }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            background-color: $phase3-color;
+        }
+}
+@keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            background-color: $phase1-color;
+        }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            background-color: $phase2-color;
+        }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            background-color: $phase3-color;
+        }
+  }
