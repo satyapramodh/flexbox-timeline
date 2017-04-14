@@ -1,17 +1,10 @@
-.phase1-color{
-  background-color: $phase1-color;
-}
-
-.phase2-color{
-  background-color: $phase2-color;
-}
-
-.phase3-color{
-  background-color: $phase3-color;
-}
-
 .timeline{
   background-color: #eaebec;
+  overflow: auto;
+  border-top: 1px solid rgba(191, 191, 191, 0.4);
+  border-bottom: 1px solid rgba(191, 191, 191, 0.4);
+  position: relative;
+
   @include mq('tablet', 'min'){
     padding: 100px 0;
   }
@@ -19,10 +12,6 @@
   @include mq('tablet', 'max'){
     padding: 50px 0;
   }
-  overflow: auto;
-  border-top: 1px solid rgba(191, 191, 191, 0.4);
-  border-bottom: 1px solid rgba(191, 191, 191, 0.4);
-  position: relative;
 
   // wrapper
   .wrapper{
@@ -60,19 +49,6 @@
   }
 
   .phase-details{
-    @include mq('tablet', 'min'){
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      ul{
-        width: 200px;
-      }
-    }
-
-    @include mq('tablet', 'max'){
-      margin: 25px;
-    }
-
     ul{
       padding: 5px;
       list-style-type: none;
@@ -82,6 +58,23 @@
         padding: 10px;
         text-transform: capitalize;
         color: white;
+      }
+    }
+  }
+
+  @include mq('tablet', 'max'){
+    .phase-details{
+      margin: 25px;
+    }
+  }
+
+  @include mq('tablet', 'min'){
+    .phase-details{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      ul{
+        width: 200px;
       }
     }
   }
@@ -110,7 +103,6 @@
   .card{
     position: relative;
     display: block;
-    // overflow: auto;
     margin: 10px auto 80px;
     max-width: 94%;
     z-index: 2;
@@ -122,6 +114,82 @@
     -moz-animation-iteration-count: 1;
     @extend %timeline-shadows;
     border: 1px solid #ddd;
+    background-color: white;
+
+    .number-box {
+      display: inline;
+      font-size: 16px;
+      line-height: 10px;
+      font-weight: 300;
+      background: #ddd;
+      padding: 5px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .head {
+      padding: 20px 20px 0 20px;
+      position: relative;
+      // display: flex;
+      // align-items: center;
+      color: #000;
+      text-align: center;
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1rem;
+      min-height: 100px;
+
+      &:after{
+        border-color: white;
+        content: '';
+      }
+
+      h2 {
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 700;
+        display: block;
+        margin: 0 auto;
+        padding-bottom: 6px;
+        line-height: 2.5rem;
+        color: black;
+        text-align: center;
+        span {
+          display: block;
+          font-size: 0.6rem;
+          margin: 0;
+        }
+      }
+    }
+
+    .body{
+      background: #fff;
+      border: 1px solid rgba(191, 191, 191, 0.4);
+      border-top: 0;
+      min-height: 150px;
+      text-align: center;
+      padding: 0 20px 20px 20px;
+      p {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 15px;
+      }
+
+      img {
+        display: block;
+        min-height: 200px;
+        max-height: 400px;
+        height: auto;
+        width: 100%;
+      }
+      .highlight-num{
+        color: $highlight-orange;
+        font-size: 40px;
+        text-align: center;
+        margin: 10px 0;
+      }
+    }
   }
 
   @include mq('phone-wide', 'min'){
@@ -158,9 +226,14 @@
       margin: 90px;
       margin-top: 45px;
       margin-bottom: 45px;
+      .body {
+        height: auto;
+        // max-height: 400px;
+        overflow-y: auto;
+      }
     }
 
-    div.card.even{
+    .card.even{
       margin-right: 45px;
       .head{
         &:after{
@@ -174,7 +247,7 @@
       }
     }
 
-    div.card.odd {
+    .card.odd {
       margin-left: 45px;
       margin-top: 180px;
       .head{
@@ -189,10 +262,6 @@
         }
       }
     }
-
-    // div.card.offset {
-    //   margin-top: 180px;
-    // }
   }
 
   // styles for dots on the line generated for the timeline
@@ -213,8 +282,6 @@
       height: 9px;
       background-color: #46b8e9; // bdbdbd
       border-radius: 9px;
-      // box-shadow: 0px 0px 2px 8px #f7f7f7;
-
 
       -moz-animation-duration: 0.8s;
       -webkit-animation-duration: 0.8s;
@@ -237,176 +304,15 @@
     }
   }
 
-
-  /********* Body **********/
-  .card .body {
-    background: #fff;
-    border: 1px solid rgba(191, 191, 191, 0.4);
-    border-top: 0;
-    padding: 15px;
-    img{
-      min-height: 200px;
-      max-height: 400px;
-      height: auto;
-      width: 100%;
-    }
-  }
-
-  @include mq('tablet-wide', 'min'){
-    .card .body {
-      height: auto;
-      // max-height: 400px;
-      overflow-y: auto;
-    }
-  }
-
   .hide-card{
     display: none;
   }
 
-  .card {
-    .body{
-      padding: 0 20px 20px 20px;
-      p {
-        font-size: 14px;
-        line-height: 18px;
-        margin-bottom: 15px;
-      }
+}
 
-      img {
-        display: block;
-        width: 100%;
-      }
-      .highlight-num{
-        color: $highlight-orange;
-        font-size: 40px;
-        text-align: center;
-        margin: 10px 0;
-      }
-    }
-
-    .head {
-      padding: 20px 20px 0 20px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      color: #fff;
-      font-weight: 400;
-
-      &:after{
-        border-color: #ddd;
-        content: '';
-      }
-
-      .number-box {
-        display: block;
-        float: left;
-        margin: 10px;
-        padding: 5px;
-        font-size: 16px;
-        line-height: 10px;
-        font-weight: 300;
-        background: rgba(0, 0, 0, 0.17);
-      }
-
-      h2 {
-        text-transform: uppercase;
-        font-size: 1.5rem;
-        font-weight: 700;
-        display: block;
-        margin: 0;
-        padding-bottom: 6px;
-        line-height: 2.5rem;
-        color: black;
-        span {
-          display: block;
-          font-size: 0.6rem;
-          margin: 0;
-        }
-      }
-    }
-
-    // color list
-    .head-color-white{
-      background-color: white;
-      &:after{
-        border-color: white;
-      }
-    }
-    .head-color-0{
-      background-color: #32acba;
-      &:after{
-        border-color: #32acba;
-      }
-    }
-
-    .head-color-1{
-      background-color: #46b8e9;
-      &:after{
-        border-color: #46b8e9;
-      }
-    }
-
-    .head-color-2{
-      background-color: #3ee9d1;
-      &:after{
-        border-color: #3ee9d1;
-      }
-    }
-
-    .head-color-3{
-      background-color: #ce43eb;
-      &:after{
-        border-color: #ce43eb;
-      }
-    }
-
-    .head-color-4{
-      background-color: #4d92eb;
-      &:after{
-        border-color: #4d92eb;
-      }
-    }
-
-    .head-color-5{
-      background-color: #46b8e9;
-      &:after{
-        border-color: #46b8e9;
-      }
-    }
-
-    .head-color-6{
-      background-color: #ab4545;
-      &:after{
-        border-color: #ab4545;
-      }
-    }
-
-    .head-color-7{
-      background-color: #654292;
-      &:after{
-        border-color: #654292;
-      }
-    }
-
-    .head-color-8{
-      background-color: #129265;
-      &:after{
-        border-color: #129265;
-      }
-    }
-
-    @include mq('phone-wide','min') {
-      .card .head h2 {
-        font-size: 165%;
-        line-height: 1.2rem;
-      }
-    }
-
-    @include mq('phone-wide', 'min') {
-      .card .head h2 span {
-        font-size: 0.8rem;
-      }
-    }
+.head-color-white{
+  background-color: white;
+  &:after{
+    border-color: white;
   }
 }
