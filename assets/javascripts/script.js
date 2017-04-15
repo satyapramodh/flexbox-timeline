@@ -32,8 +32,9 @@ function addNextCard() {
 
   if(window.innerWidth > 768){
     var heights = {};
-    heights.head = lastCard.find(".head").outerHeight();
-    heights.body = lastCard.find(".body").outerHeight();
+    heights.head = lastCard.find(".card-wrapper").outerHeight();
+    // heights.body = lastCard.find(".body").outerHeight();
+    heights.body = 0;
 
     // console.log(cardCount, heights['head'], heights['body']);
     lastCard.height(heights.head + heights.body);

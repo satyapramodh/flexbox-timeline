@@ -8361,14 +8361,27 @@ footer {
     margin: 10px auto 80px;
     max-width: 94%;
     z-index: 2;
+    overflow: hidden;
+    height: 100%;
     -webkit-animation-duration: 1s;
     -webkit-animation-delay: 1s;
     -webkit-animation-iteration-count: 1;
     -moz-animation-duration: 1s;
     -moz-animation-delay: 1s;
-    -moz-animation-iteration-count: 1;
-    border: 1px solid #ddd;
-    background-color: white; }
+    -moz-animation-iteration-count: 1; }
+    .timeline .card .card-wrapper {
+      min-height: 250px;
+      display: block;
+      border: 1px solid #ddd;
+      background-color: white;
+      overflow: hidden; }
+      .timeline .card .card-wrapper:after {
+        border-color: white;
+        content: ''; }
+    .timeline .card .content {
+      margin: 20px auto;
+      width: 400px;
+      top: 30%; }
     .timeline .card .number-box {
       display: inline;
       font-size: 16px;
@@ -8380,17 +8393,12 @@ footer {
       bottom: 0;
       right: 0; }
     .timeline .card .head {
-      padding: 20px 20px 0 20px;
       position: relative;
       color: #000;
       text-align: center;
       font-weight: 400;
       font-size: 1.5rem;
-      line-height: 1rem;
-      min-height: 100px; }
-      .timeline .card .head:after {
-        border-color: white;
-        content: ''; }
+      line-height: 1rem; }
       .timeline .card .head h2 {
         text-transform: uppercase;
         font-size: 2rem;
@@ -8407,11 +8415,8 @@ footer {
           margin: 0; }
     .timeline .card .body {
       background: #fff;
-      border: 1px solid rgba(191, 191, 191, 0.4);
       border-top: 0;
-      min-height: 150px;
-      text-align: center;
-      padding: 0 20px 20px 20px; }
+      text-align: center; }
       .timeline .card .body p {
         font-size: 14px;
         line-height: 18px;
@@ -8453,34 +8458,36 @@ footer {
         overflow-y: auto; }
     .timeline .card.even {
       margin-right: 45px; }
-      .timeline .card.even .head:after {
+      .timeline .card.even .card-wrapper:after {
         border-left-width: 15px;
         border-left-style: solid;
         left: 100%; }
-      .timeline .card.even .head:before {
+      .timeline .card.even .card-wrapper:before {
         left: 491.5px; }
     .timeline .card.odd {
       margin-left: 45px;
       margin-top: 180px; }
-      .timeline .card.odd .head:after {
+      .timeline .card.odd .card-wrapper:after {
         border-right-width: 15px;
         border-right-style: solid;
         right: 100%; }
-      .timeline .card.odd .head:before {
+      .timeline .card.odd .card-wrapper:before {
         right: 489.5px; } }
   @media only screen and (min-width: 1024px) {
-    .timeline div.card.odd .head::after, .timeline .card.even .head::after {
+    .timeline div.card.odd .card-wrapper::after, .timeline .card.even .card-wrapper::after {
       position: absolute;
       content: "";
       width: 0;
       height: 0;
+      top: 10px;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent; }
-    .timeline div.card.odd .head::before, .timeline .card.even .head::before {
+    .timeline div.card.odd .card-wrapper::before, .timeline .card.even .card-wrapper::before {
       position: absolute;
       content: "";
       width: 9px;
       height: 9px;
+      top: 20px;
       background-color: #46b8e9;
       border-radius: 9px;
       -moz-animation-duration: 0.8s;
