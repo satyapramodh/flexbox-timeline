@@ -8379,15 +8379,26 @@ footer {
       position: absolute;
       bottom: 0;
       right: 0; }
+    .timeline .card .card-wrapper {
+      padding: 20px;
+      overflow: hidden; }
+      .timeline .card .card-wrapper .content {
+        min-height: 200px;
+        display: table;
+        width: 100%;
+        text-align: center; }
+        .timeline .card .card-wrapper .content .text-layout, .timeline .card .card-wrapper .content .img-layout {
+          display: table-cell;
+          vertical-align: middle; }
+        .timeline .card .card-wrapper .content .img-layout {
+          height: 100%; }
     .timeline .card .head {
-      padding: 20px 20px 0 20px;
       position: relative;
       color: #000;
       text-align: center;
       font-weight: 400;
       font-size: 1.5rem;
-      line-height: 1rem;
-      min-height: 100px; }
+      line-height: 1rem; }
       .timeline .card .head:after {
         border-color: white;
         content: ''; }
@@ -8407,21 +8418,16 @@ footer {
           margin: 0; }
     .timeline .card .body {
       background: #fff;
-      border: 1px solid rgba(191, 191, 191, 0.4);
       border-top: 0;
-      min-height: 150px;
-      text-align: center;
-      padding: 0 20px 20px 20px; }
+      text-align: center; }
       .timeline .card .body p {
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 18px;
+        line-height: 22px;
         margin-bottom: 15px; }
       .timeline .card .body img {
         display: block;
-        min-height: 200px;
-        max-height: 400px;
-        height: auto;
-        width: 100%; }
+        height: 100px;
+        margin: 0 auto; }
       .timeline .card .body .highlight-num {
         color: #e66e2b;
         font-size: 40px;
@@ -8434,13 +8440,8 @@ footer {
     .timeline .card {
       max-width: 40%; } }
   @media only screen and (max-width: 767px) {
-    .timeline .card {
-      height: 400px; }
-      .timeline .card .head {
-        height: 85px; }
-      .timeline .card .body {
-        height: 315px;
-        overflow: auto; } }
+    .timeline .card .body {
+      overflow: auto; } }
   @media only screen and (min-width: 1024px) {
     .timeline .card {
       max-width: 450px;
@@ -8453,34 +8454,37 @@ footer {
         overflow-y: auto; }
     .timeline .card.even {
       margin-right: 45px; }
-      .timeline .card.even .head:after {
+      .timeline .card.even .card-wrapper:after {
         border-left-width: 15px;
         border-left-style: solid;
         left: 100%; }
-      .timeline .card.even .head:before {
+      .timeline .card.even .card-wrapper:before {
         left: 491.5px; }
     .timeline .card.odd {
       margin-left: 45px;
       margin-top: 180px; }
-      .timeline .card.odd .head:after {
+      .timeline .card.odd .card-wrapper:after {
         border-right-width: 15px;
         border-right-style: solid;
         right: 100%; }
-      .timeline .card.odd .head:before {
+      .timeline .card.odd .card-wrapper:before {
         right: 489.5px; } }
   @media only screen and (min-width: 1024px) {
-    .timeline div.card.odd .head::after, .timeline .card.even .head::after {
+    .timeline div.card.odd .card-wrapper::after, .timeline .card.even .card-wrapper::after {
       position: absolute;
       content: "";
       width: 0;
       height: 0;
+      top: 20px;
+      color: white;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent; }
-    .timeline div.card.odd .head::before, .timeline .card.even .head::before {
+    .timeline div.card.odd .card-wrapper::before, .timeline .card.even .card-wrapper::before {
       position: absolute;
       content: "";
       width: 9px;
       height: 9px;
+      top: 30px;
       background-color: #46b8e9;
       border-radius: 9px;
       -moz-animation-duration: 0.8s;

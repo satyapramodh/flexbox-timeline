@@ -127,9 +127,26 @@
       bottom: 0;
       right: 0;
     }
+    .card-wrapper{
+      padding: 20px;
+      overflow: hidden;
+      .content{
+        min-height: 200px;
+        display: table;
+        width: 100%;
+        text-align: center;
+        .text-layout, .img-layout{
+          display: table-cell;
+          vertical-align: middle;
+        }
+
+        .img-layout{
+          height: 100%;
+        }
+      }
+    }
 
     .head {
-      padding: 20px 20px 0 20px;
       position: relative;
       // display: flex;
       // align-items: center;
@@ -138,7 +155,7 @@
       font-weight: 400;
       font-size: 1.5rem;
       line-height: 1rem;
-      min-height: 100px;
+      // min-height: 100px;
 
       &:after{
         border-color: white;
@@ -165,23 +182,24 @@
 
     .body{
       background: #fff;
-      border: 1px solid rgba(191, 191, 191, 0.4);
+      // border: 1px solid rgba(191, 191, 191, 0.4);
       border-top: 0;
-      min-height: 150px;
+      // min-height: 150px;
       text-align: center;
-      padding: 0 20px 20px 20px;
       p {
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 18px;
+        line-height: 22px;
         margin-bottom: 15px;
       }
 
       img {
         display: block;
-        min-height: 200px;
-        max-height: 400px;
-        height: auto;
-        width: 100%;
+        // min-height: 200px;
+        // max-height: 400px;
+        // height: auto;
+        // width: 100%;
+        height: 100px;
+        margin: 0 auto;
       }
       .highlight-num{
         color: $highlight-orange;
@@ -207,12 +225,13 @@
 
   @include mq('tablet', 'max'){
     .card{
-      height: 400px;
-      .head{
-        height: 85px;
-      }
+      // height: 400px;
+      // TODO: Fix this
+      // .head{
+      //   height: 85px;
+      // }
       .body{
-        height: 315px;
+        // height: 315px;
         overflow: auto;
       }
     }
@@ -235,7 +254,7 @@
 
     .card.even{
       margin-right: 45px;
-      .head{
+      .card-wrapper{
         &:after{
           border-left-width: 15px;
           border-left-style: solid;
@@ -250,7 +269,7 @@
     .card.odd {
       margin-left: 45px;
       margin-top: 180px;
-      .head{
+      .card-wrapper{
         &:after {
           border-right-width: 15px;
           border-right-style: solid;
@@ -266,20 +285,23 @@
 
   // styles for dots on the line generated for the timeline
   @include mq('tablet-wide', 'min') {
-    div.card.odd .head::after, .card.even .head::after {
+    div.card.odd .card-wrapper::after, .card.even .card-wrapper::after {
       position: absolute;
       content: "";
       width: 0;
       height: 0;
+      top: 20px;
+      color: white;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
 
-    div.card.odd .head::before, .card.even .head::before {
+    div.card.odd .card-wrapper::before, .card.even .card-wrapper::before {
       position: absolute;
       content: "";
       width: 9px;
       height: 9px;
+      top: 30px;
       background-color: #46b8e9; // bdbdbd
       border-radius: 9px;
 

@@ -32,11 +32,12 @@ function addNextCard() {
 
   if(window.innerWidth > 768){
     var heights = {};
-    heights.head = lastCard.find(".head").outerHeight();
-    heights.body = lastCard.find(".body").outerHeight();
+    heights.head = lastCard.find(".card-wrapper").outerHeight();
+    // heights.body = lastCard.find(".body").outerHeight();
 
     // console.log(cardCount, heights['head'], heights['body']);
-    lastCard.height(heights.head + heights.body);
+    // lastCard.height(heights.head + heights.body);
+    lastCard.height(heights.head);
   }
 
   // add card head color
@@ -57,8 +58,18 @@ function addNextCard() {
   }
 }
 
+
+function preloadImage(url)
+{
+    (new Image()).src = url;
+}
+
 function preloadCards() {
   _.each(cardData.data, function (item) {
+    if(item.gsx$img){
+      preloadImage(item.gsx$img.$t);
+      console.log("preloading ", item.gsx$img.$t);
+    }
     cards.push(cardTemplate(item));
   });
 }
