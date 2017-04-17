@@ -8260,6 +8260,13 @@ body {
       color: #e66e2b;
       font-size: 3.5rem;
       font-weight: bold; }
+  .header h6 {
+    font-size: 18px;
+    font-weight: 800; }
+  .header .partner-logos {
+    margin-bottom: 25px; }
+    .header .partner-logos img {
+      height: 40px; }
 
 .timeline .phase-details ul, .timeline .phase-label, .timeline .card {
   -webkit-box-shadow: 0 10px 20px -4px #aaa;
@@ -8276,10 +8283,6 @@ footer {
   footer h6 {
     font-size: 18px;
     font-weight: 800; }
-  footer .partner-logos {
-    margin-bottom: 25px; }
-    footer .partner-logos img {
-      height: 40px; }
   footer .footer-logos {
     margin: 10px 0; }
     footer .footer-logos img {

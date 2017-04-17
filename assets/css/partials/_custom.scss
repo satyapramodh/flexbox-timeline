@@ -40,6 +40,16 @@ body {
       font-weight: bold;
     }
   }
+  h6{
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .partner-logos{
+    margin-bottom: 25px;
+    img{
+      height: 40px;
+    }
+  }
 }
 
 %timeline-shadows{
@@ -58,12 +68,6 @@ footer{
   h6{
     font-size: 18px;
     font-weight: 800;
-  }
-  .partner-logos{
-    margin-bottom: 25px;
-    img{
-      height: 40px;
-    }
   }
   .footer-logos{
     margin: 10px 0;
